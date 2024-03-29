@@ -18,17 +18,17 @@ from launch_ros.actions import Node, PushRosNamespace
 ARGUMENTS = [
     DeclareLaunchArgument('bridge', default_value='true',
                           choices=['true', 'false'],
-                          description='Use ros_ign_bridge'),
+                          description='Use ros_gz_bridge'),
     DeclareLaunchArgument('use_sim_time', default_value='true',
                           choices=['true', 'false'],
                           description='use_sim_time'),
     DeclareLaunchArgument('world', default_value='depot',
-                          description='Ignition World'),
+                          description='Gz World'),
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
     DeclareLaunchArgument('use_rviz', default_value='true',
                           choices=['true', 'false'], description='Start rviz.'),
-    DeclareLaunchArgument('spawn_dock', default_value='true',
+    DeclareLaunchArgument('spawn_dock', default_value='false',
                           choices=['true', 'false'],
                           description='Spawn the standard dock model.'),
 ]
@@ -43,16 +43,16 @@ def generate_launch_description():
     # Directories
     pkg_irobot_create_common_bringup = get_package_share_directory(
         'irobot_create_common_bringup')
-    pkg_irobot_create_ignition_bringup = get_package_share_directory(
-        'irobot_create_ignition_bringup')
+    pkg_irobot_create_gz_bringup = get_package_share_directory(
+        'irobot_create_gz_bringup')
 
     # Paths
-    ros_ign_bridge_launch = PathJoinSubstitution(
-        [pkg_irobot_create_ignition_bringup, 'launch', 'create3_ros_ignition_bridge.launch.py'])
+    ros_gz_bridge_launch = PathJoinSubstitution(
+        [pkg_irobot_create_gz_bringup, 'launch', 'create3_ros_gz_bridge.launch.py'])
     create3_nodes_launch = PathJoinSubstitution(
         [pkg_irobot_create_common_bringup, 'launch', 'create3_nodes.launch.py'])
-    create3_ignition_nodes_launch = PathJoinSubstitution(
-        [pkg_irobot_create_ignition_bringup, 'launch', 'create3_ignition_nodes.launch.py'])
+    create3_gz_nodes_launch = PathJoinSubstitution(
+        [pkg_irobot_create_gz_bringup, 'launch', 'create3_gz_nodes.launch.py'])
     robot_description_launch = PathJoinSubstitution(
         [pkg_irobot_create_common_bringup, 'launch', 'robot_description.launch.py'])
     dock_description_launch = PathJoinSubstitution(
@@ -85,18 +85,19 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([dock_description_launch]),
             condition=IfCondition(LaunchConfiguration('spawn_dock')),
             # The robot starts docked
-            launch_arguments={'gazebo': 'ignition'}.items(),
+            launch_arguments={'gazebo': 'gz'}.items(),
         ),
 
         # Robot description
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([robot_description_launch]),
-            launch_arguments={'gazebo': 'ignition'}.items()
+            launch_arguments={'gazebo': 'gz'}.items()
         ),
+
 
         # Spawn Create 3
         Node(
-            package='ros_ign_gazebo',
+            package='ros_gz_sim',
             executable='create',
             arguments=['-name', robot_name,
                        '-x', x,
@@ -107,9 +108,9 @@ def generate_launch_description():
             output='screen',
         ),
 
-        # Spawn dock
+        # Spawn dock 
         Node(
-            package='ros_ign_gazebo',
+            package='ros_gz_gazebo',
             executable='create',
             arguments=['-name', dock_name,
                        '-x', x_dock,
@@ -121,9 +122,9 @@ def generate_launch_description():
             condition=IfCondition(LaunchConfiguration('spawn_dock'))
         ),
 
-        # ROS Ign Bridge
+        # ROS Gz Bridge
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([ros_ign_bridge_launch]),
+            PythonLaunchDescriptionSource([ros_gz_bridge_launch]),
             launch_arguments=[
                 ('world', LaunchConfiguration('world')),
                 ('robot_name', robot_name),
@@ -131,28 +132,14 @@ def generate_launch_description():
             ]
         ),
 
-        # Create 3 nodes
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([create3_nodes_launch]),
-            launch_arguments=[
-                ('namespace', namespace)
-            ]
-        ),
 
-        # Create 3 Ignition nodes
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([create3_ignition_nodes_launch]),
-            launch_arguments=[
-                ('robot_name', robot_name),
-                ('dock_name', dock_name),
-            ]
-        ),
 
         # Rviz
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([rviz2_launch]),
             condition=IfCondition(LaunchConfiguration('use_rviz')),
         )
+
     ])
 
     # Create launch description and add actions

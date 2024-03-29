@@ -16,7 +16,7 @@ ARGUMENTS = [
     DeclareLaunchArgument('use_rviz', default_value='true',
                           choices=['true', 'false'], description='Start rviz.'),
     DeclareLaunchArgument('world', default_value='depot',
-                          description='Ignition World'),
+                          description='Gz World'),
 ]
 
 for pose_element in ['x', 'y', 'z', 'yaw']:
@@ -27,17 +27,17 @@ for pose_element in ['x', 'y', 'z', 'yaw']:
 def generate_launch_description():
 
     # Directories
-    pkg_irobot_create_ignition_bringup = get_package_share_directory(
-        'irobot_create_ignition_bringup')
+    pkg_irobot_create_gz_bringup = get_package_share_directory(
+        'irobot_create_gz_bringup')
 
     # Paths
-    ignition_launch = PathJoinSubstitution(
-        [pkg_irobot_create_ignition_bringup, 'launch', 'ignition.launch.py'])
+    gz_launch = PathJoinSubstitution(
+        [pkg_irobot_create_gz_bringup, 'launch', 'gz.launch.py'])
     robot_spawn_launch = PathJoinSubstitution(
-        [pkg_irobot_create_ignition_bringup, 'launch', 'create3_spawn.launch.py'])
+        [pkg_irobot_create_gz_bringup, 'launch', 'create3_spawn.launch.py'])
 
-    ignition = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([ignition_launch]),
+    gz = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([gz_launch]),
         launch_arguments=[
             ('world', LaunchConfiguration('world'))
         ]
@@ -55,6 +55,6 @@ def generate_launch_description():
 
     # Create launch description and add actions
     ld = LaunchDescription(ARGUMENTS)
-    ld.add_action(ignition)
+    ld.add_action(gz)
     ld.add_action(robot_spawn)
     return ld

@@ -19,16 +19,16 @@ ARGUMENTS = [
 def generate_launch_description():
 
     # Directories
-    pkg_create3_ignition_bringup = get_package_share_directory('irobot_create_ignition_bringup')
+    pkg_create3_gz_bringup = get_package_share_directory('irobot_create_gz_bringup')
 
     pose_republisher_params_yaml_file = PathJoinSubstitution(
-        [pkg_create3_ignition_bringup, 'config', 'pose_republisher_params.yaml'])
+        [pkg_create3_gz_bringup, 'config', 'pose_republisher_params.yaml'])
     sensors_params_yaml_file = PathJoinSubstitution(
-        [pkg_create3_ignition_bringup, 'config', 'sensors_params.yaml'])
+        [pkg_create3_gz_bringup, 'config', 'sensors_params.yaml'])
 
     # Pose republisher
     pose_republisher_node = Node(
-        package='irobot_create_ignition_toolbox',
+        package='irobot_create_gz_toolbox',
         name='pose_republisher_node',
         executable='pose_republisher_node',
         parameters=[pose_republisher_params_yaml_file,
@@ -40,7 +40,7 @@ def generate_launch_description():
 
     # Sensors
     sensors_node = Node(
-        package='irobot_create_ignition_toolbox',
+        package='irobot_create_gz_toolbox',
         name='sensors_node',
         executable='sensors_node',
         parameters=[sensors_params_yaml_file,
@@ -50,7 +50,7 @@ def generate_launch_description():
 
     # Interface buttons
     interface_buttons_node = Node(
-        package='irobot_create_ignition_toolbox',
+        package='irobot_create_gz_toolbox',
         name='interface_buttons_node',
         executable='interface_buttons_node',
         parameters=[{'use_sim_time': True}],
