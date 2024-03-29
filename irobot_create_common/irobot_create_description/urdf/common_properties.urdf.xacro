@@ -150,10 +150,6 @@
     </xacro:if>
   </xacro:macro>
 
-
-
-
-
   <!-- Conversion macros -->
   <xacro:property name="cm2m"    value="${1/100.0}"/>
   <xacro:property name="mm2m"    value="${1/1000.0}"/>
@@ -187,5 +183,4 @@
       </material>
     </visual>
   </xacro:macro>
-
 </robot>
