@@ -11,7 +11,7 @@ from launch_ros.actions import Node
 
 ARGUMENTS = [
     DeclareLaunchArgument('gazebo', default_value='classic',
-                          choices=['classic', 'ignition'],
+                          choices=['classic', 'ignition', 'gz'],
                           description='Which gazebo simulation to use'),
     DeclareLaunchArgument('visualize_rays', default_value='true',
                           choices=['true', 'false'],

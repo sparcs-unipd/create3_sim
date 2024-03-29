@@ -9,11 +9,12 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import Command, PathJoinSubstitution
 from launch.substitutions.launch_configuration import LaunchConfiguration
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 
 
 ARGUMENTS = [
     DeclareLaunchArgument('gazebo', default_value='classic',
-                          choices=['classic', 'ignition'],
+                          choices=['classic', 'ignition', 'gz'],
                           description='Which gazebo simulator to use'),
     DeclareLaunchArgument('visualize_rays', default_value='false',
                           choices=['true', 'false'],
@@ -38,11 +39,11 @@ def generate_launch_description():
         parameters=[
             {'use_sim_time': True},
             {'robot_description':
-             Command(
+             ParameterValue(Command(
                   ['xacro', ' ', xacro_file, ' ',
                    'gazebo:=', gazebo_simulator, ' ',
                    'visualize_rays:=', visualize_rays, ' ',
-                   'namespace:=', namespace])},
+                   'namespace:=', namespace]),value_type=str)},
         ],
         remappings=[
             ('/tf', 'tf'),
