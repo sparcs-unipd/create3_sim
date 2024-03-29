@@ -13,7 +13,7 @@ from launch_ros.actions import Node
 
 ARGUMENTS = [
     DeclareLaunchArgument('gazebo', default_value='classic',
-                          choices=['classic', 'ignition'],
+                          choices=['classic', 'ignition','gz'],
                           description='Which gazebo simulator to use'),
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
