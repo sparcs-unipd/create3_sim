@@ -27,6 +27,9 @@
   <xacro:if value="${'$(arg gazebo)' == 'ignition'}">
     <xacro:property name="body_cog_x_offset"       value="${2.28*cm2m}" />
   </xacro:if>
+  <xacro:if value="${'$(arg gazebo)' == 'gz'}">
+    <xacro:property name="body_cog_x_offset"       value="${2.28*cm2m}" />
+  </xacro:if>
   <xacro:if value="${'$(arg gazebo)' == 'classic'}">
     <xacro:property name="body_cog_x_offset"       value="${0*cm2m}" />
   </xacro:if>
@@ -41,6 +44,9 @@
 
   <xacro:property name="caster_position_x"       value="${12.5*cm2m}" />
   <xacro:if value="${'$(arg gazebo)' == 'ignition'}">
+    <xacro:property name="caster_position_z"       value="${-5.03*cm2m}" />
+  </xacro:if>
+  <xacro:if value="${'$(arg gazebo)' == 'gz'}">
     <xacro:property name="caster_position_z"       value="${-5.03*cm2m}" />
   </xacro:if>
   <xacro:if value="${'$(arg gazebo)' == 'classic'}">
@@ -78,6 +84,11 @@
   </link>
 
   <xacro:if value="${'$(arg gazebo)' == 'ignition'}">
+    <gazebo reference="base_link">
+      <xacro:material_darkgray/>
+    </gazebo>
+  </xacro:if>
+  <xacro:if value="${'$(arg gazebo)' == 'gz'}">
     <gazebo reference="base_link">
       <xacro:material_darkgray/>
     </gazebo>
@@ -135,6 +146,21 @@
   <xacro:if value="${'$(arg gazebo)' == 'ignition'}">
     <gazebo>
       <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+        <parameters>$(find irobot_create_control)/config/control.yaml</parameters>
+        <ros>
+          <remapping>~/odom:=odom</remapping>
+          <remapping>/tf:=tf</remapping>
+          <remapping>/tf_static:=tf_static</remapping>
+          <remapping>/diagnostics:=diagnostics</remapping>
+          <namespace>$(arg namespace)</namespace>
+        </ros>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
+  <xacro:if value="${'$(arg gazebo)' == 'gz'}">
+    <gazebo>
+      <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
         <parameters>$(find irobot_create_control)/config/control.yaml</parameters>
         <ros>
           <remapping>~/odom:=odom</remapping>
@@ -302,4 +328,29 @@
       </plugin>
     </gazebo>
   </xacro:if>
+
+  <xacro:if value="${'$(arg gazebo)' == 'gz'}">
+    <gazebo>
+      <plugin filename="libgz-sim-pose-publisher-system.so" name="gz::sim::systems::PosePublisher">
+        <publish_link_pose>true</publish_link_pose>
+        <publish_nested_model_pose>true</publish_nested_model_pose>
+        <use_pose_vector_msg>true</use_pose_vector_msg>
+        <update_frequency>62</update_frequency>
+      </plugin>
+    </gazebo>
+    
+    <gazebo>
+      <plugin filename="libgz-gazebo-contact-system.so" name="gz::gazebo::systems::Contact"></plugin>
+    </gazebo>
+
+    <gazebo>
+      <plugin filename="libgz-gazebo-sensors-system.so" name="gz::gazebo::systems::Sensors">
+        <render_engine>ogre</render_engine>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
+
+
+
 </robot>

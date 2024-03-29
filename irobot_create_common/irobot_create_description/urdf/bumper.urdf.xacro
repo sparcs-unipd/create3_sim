@@ -59,6 +59,14 @@ functional, while the 4 remaining ones are created as dummy links. -->
             <topic>${namespace}/bumper_contact</topic>
           </xacro:if>
         </xacro:if>
+        <xacro:if value="${gazebo == 'gz'}">
+          <xacro:if value="${namespace == ''}">
+            <topic>/bumper_contact</topic>
+          </xacro:if>
+          <xacro:if value="${namespace != ''}">
+            <topic>${namespace}/bumper_contact</topic>
+          </xacro:if>
+        </xacro:if>
       </contact>
       <xacro:if value="${gazebo == 'classic'}">
         <plugin name="${name}_plugin" filename="libgazebo_ros_create_bumper.so">

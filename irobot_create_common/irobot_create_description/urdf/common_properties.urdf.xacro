@@ -118,7 +118,41 @@
         </lidar>
       </sensor>
     </xacro:if>
+
+    <!-- Gz -->
+    <xacro:if value="${gazebo == 'gz'}"> <!-- TODO:  check if ir works-->
+      <sensor name="${sensor_name}" type="gpu_lidar">
+        <update_rate>${update_rate}</update_rate>
+        <visualize>${visualize}</visualize>
+        <always_on>true</always_on>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>${h_samples}</samples>
+              <resolution>${h_res}</resolution>
+              <min_angle>${h_min_angle}</min_angle>
+              <max_angle>${h_max_angle}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>${v_samples}</samples>
+              <resolution>${v_res}</resolution>
+              <min_angle>${v_min_angle}</min_angle>
+              <max_angle>${v_max_angle}</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>${r_min}</min>
+            <max>${r_max}</max>
+            <resolution>${r_res}</resolution>
+          </range>
+        </lidar>
+      </sensor>
+    </xacro:if>
   </xacro:macro>
+
+
+
+
 
   <!-- Conversion macros -->
   <xacro:property name="cm2m"    value="${1/100.0}"/>

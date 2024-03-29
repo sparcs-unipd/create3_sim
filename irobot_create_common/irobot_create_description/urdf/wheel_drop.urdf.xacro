@@ -16,6 +16,12 @@
     <xacro:property name="spring_damping"       value="50"/>
     <xacro:property name="spring_friction"      value="0.1"/>
   </xacro:if>
+
+  <xacro:if value="${gazebo == 'gz'}">
+    <xacro:property name="spring_stiffness_nm"  value="450"/>
+    <xacro:property name="spring_damping"       value="50"/>
+    <xacro:property name="spring_friction"      value="0.1"/>
+  </xacro:if>
   
   <xacro:property name="wd_size" value="${5*cm2m}"/>
   <xacro:property name="wd_mass" value="0.05"/>

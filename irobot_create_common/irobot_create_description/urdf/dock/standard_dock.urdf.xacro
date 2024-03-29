@@ -115,4 +115,17 @@
     </gazebo>
   </xacro:if>
 
+  <xacro:if value="${'$(arg gazebo)' == 'gz'}">
+    <gazebo>
+      <static>true</static>
+      <!-- Ground truth pose-->
+      <plugin filename="libgz-sim-pose-publisher-system.so" name="gz::sim::systems::PosePublisher">
+        <publish_link_pose>true</publish_link_pose>
+        <publish_nested_model_pose>true</publish_nested_model_pose>   
+        <use_pose_vector_msg>true</use_pose_vector_msg>   
+        <update_frequency>62</update_frequency>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
 </robot>
