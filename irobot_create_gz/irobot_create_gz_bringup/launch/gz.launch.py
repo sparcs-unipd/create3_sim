@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
+from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable, AppendEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -37,7 +37,7 @@ def generate_launch_description():
         'ros_gz_sim')
 
     # Set gz resource path
-    gz_resource_path = SetEnvironmentVariable(name='GZ_SIM_RESOURCE_PATH',
+    gz_resource_path = AppendEnvironmentVariable(name='GZ_SIM_RESOURCE_PATH',
                                                value=[os.path.join(
                                                       pkg_irobot_create_gz_bringup,
                                                       'worlds'), ':' +
@@ -45,7 +45,7 @@ def generate_launch_description():
                                                           pkg_irobot_create_description).
                                                           parent.resolve())])
 
-    gz_gui_plugin_path = SetEnvironmentVariable(name='GZ_GUI_PLUGIN_PATH',
+    gz_gui_plugin_path = AppendEnvironmentVariable(name='GZ_GUI_PLUGIN_PATH',
                                                  value=[os.path.join(
                                                         pkg_irobot_create_gz_plugins,
                                                         'lib')])
