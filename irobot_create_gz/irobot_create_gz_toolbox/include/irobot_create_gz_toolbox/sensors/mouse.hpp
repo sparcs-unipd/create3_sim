@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__MOUSE_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__MOUSE_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__SENSORS__MOUSE_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__SENSORS__MOUSE_HPP_
 
 #include <atomic>
 #include <chrono>
@@ -15,7 +15,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class Mouse
@@ -40,6 +40,6 @@ private:
   tf2::Vector3 last_mouse_position_;
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__MOUSE_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__SENSORS__MOUSE_HPP_

@@ -8,10 +8,10 @@
 #include <string>
 #include <vector>
 
-#include "irobot_create_ignition_toolbox/sensors/ir_intensity.hpp"
+#include "irobot_create_gz_toolbox/sensors/ir_intensity.hpp"
 #include "irobot_create_toolbox/math.hpp"
 
-using irobot_create_ignition_toolbox::IrIntensity;
+using irobot_create_gz_toolbox::IrIntensity;
 
 IrIntensity::IrIntensity(std::shared_ptr<rclcpp::Node> & nh)
 : nh_(nh),

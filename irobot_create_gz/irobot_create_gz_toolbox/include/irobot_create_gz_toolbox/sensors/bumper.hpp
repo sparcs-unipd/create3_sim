@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__BUMPER_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__BUMPER_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__SENSORS__BUMPER_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__SENSORS__BUMPER_HPP_
 
 #include <atomic>
 #include <memory>
@@ -17,7 +17,7 @@
 #include "ros_gz_interfaces/msg/contacts.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class Bumper
@@ -40,6 +40,6 @@ private:
   std::mutex robot_pose_mutex_;
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__BUMPER_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__SENSORS__BUMPER_HPP_

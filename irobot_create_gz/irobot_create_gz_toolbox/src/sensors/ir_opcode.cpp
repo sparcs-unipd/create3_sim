@@ -6,10 +6,10 @@
 #include <memory>
 #include <utility>
 
-#include "irobot_create_ignition_toolbox/sensors/ir_opcode.hpp"
+#include "irobot_create_gz_toolbox/sensors/ir_opcode.hpp"
 #include "irobot_create_toolbox/polar_coordinates.hpp"
 
-using irobot_create_ignition_toolbox::IrOpcode;
+using irobot_create_gz_toolbox::IrOpcode;
 
 IrOpcode::IrOpcode(std::shared_ptr<rclcpp::Node> & nh)
 : nh_(nh)
@@ -121,10 +121,10 @@ IrOpcode::EmitterCartesianPointToReceiverPolarPoint(const tf2::Vector3 & emitter
     receiver_pose = last_receiver_pose_;
   }
 
-  tf2::Vector3 emitter_wrt_receiver_pose = irobot_create_ignition_toolbox::utils::object_wrt_frame(
+  tf2::Vector3 emitter_wrt_receiver_pose = irobot_create_gz_toolbox::utils::object_wrt_frame(
     emitter_pose, receiver_pose);
   tf2::Vector3 emitter_wrt_receiver_point = emitter_wrt_receiver_pose + emitter_point;
-  ignition::math::Vector2d cartesian_coord =
+  gz::math::Vector2d cartesian_coord =
   {emitter_wrt_receiver_point[0], emitter_wrt_receiver_point[1]};
   return irobot_create_toolbox::toPolar(cartesian_coord);
 }
@@ -144,10 +144,10 @@ IrOpcode::ReceiverCartesianPointToEmitterPolarPoint(const tf2::Vector3 & receive
   }
 
   // Pose of receiver relative to the emitter
-  tf2::Vector3 receiver_wrt_emitter_pose = irobot_create_ignition_toolbox::utils::object_wrt_frame(
+  tf2::Vector3 receiver_wrt_emitter_pose = irobot_create_gz_toolbox::utils::object_wrt_frame(
     receiver_pose, emitter_pose);
   tf2::Vector3 receiver_wrt_emitter_point = receiver_wrt_emitter_pose + receiver_point;
-  ignition::math::Vector2d cartesian_coord =
+  gz::math::Vector2d cartesian_coord =
   {receiver_wrt_emitter_point[0], receiver_wrt_emitter_point[1]};
   return irobot_create_toolbox::toPolar(cartesian_coord);
 }

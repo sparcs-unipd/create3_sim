@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__IR_INTENSITY_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__IR_INTENSITY_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__SENSORS__IR_INTENSITY_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__SENSORS__IR_INTENSITY_HPP_
 
 #include <map>
 #include <memory>
@@ -15,7 +15,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class IrIntensity
@@ -36,6 +36,6 @@ private:
   std::string ir_intensity_sensors_[7];
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__IR_INTENSITY_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__SENSORS__IR_INTENSITY_HPP_

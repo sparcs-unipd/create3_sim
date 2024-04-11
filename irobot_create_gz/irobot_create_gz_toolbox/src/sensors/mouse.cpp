@@ -6,9 +6,9 @@
 #include <memory>
 #include <utility>
 
-#include "irobot_create_ignition_toolbox/sensors/mouse.hpp"
+#include "irobot_create_gz_toolbox/sensors/mouse.hpp"
 
-using irobot_create_ignition_toolbox::Mouse;
+using irobot_create_gz_toolbox::Mouse;
 
 Mouse::Mouse(std::shared_ptr<rclcpp::Node> & nh)
 : nh_(nh),

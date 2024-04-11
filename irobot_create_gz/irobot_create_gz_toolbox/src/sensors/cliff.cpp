@@ -7,10 +7,10 @@
 #include <string>
 #include <vector>
 
-#include "irobot_create_ignition_toolbox/sensors/cliff.hpp"
+#include "irobot_create_gz_toolbox/sensors/cliff.hpp"
 #include "irobot_create_toolbox/math.hpp"
 
-using irobot_create_ignition_toolbox::Cliff;
+using irobot_create_gz_toolbox::Cliff;
 
 Cliff::Cliff(std::shared_ptr<rclcpp::Node> & nh)
 : nh_(nh),

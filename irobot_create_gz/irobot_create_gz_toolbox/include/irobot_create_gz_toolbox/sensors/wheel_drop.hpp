@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__WHEEL_DROP_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__WHEEL_DROP_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__SENSORS__WHEEL_DROP_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__SENSORS__WHEEL_DROP_HPP_
 
 #include <map>
 #include <memory>
@@ -14,7 +14,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class WheelDrop
@@ -40,6 +40,6 @@ private:
   std::map<std::string, double> displacement_;
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__WHEEL_DROP_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__SENSORS__WHEEL_DROP_HPP_

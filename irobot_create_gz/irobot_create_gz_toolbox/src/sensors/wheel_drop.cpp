@@ -6,9 +6,9 @@
 #include <memory>
 #include <utility>
 
-#include "irobot_create_ignition_toolbox/sensors/wheel_drop.hpp"
+#include "irobot_create_gz_toolbox/sensors/wheel_drop.hpp"
 
-using irobot_create_ignition_toolbox::WheelDrop;
+using irobot_create_gz_toolbox::WheelDrop;
 
 WheelDrop::WheelDrop(std::shared_ptr<rclcpp::Node> & nh)
 : nh_(nh),

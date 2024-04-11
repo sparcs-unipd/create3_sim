@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__CLIFF_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__CLIFF_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__SENSORS__CLIFF_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__SENSORS__CLIFF_HPP_
 
 #include <memory>
 #include <map>
@@ -15,7 +15,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class Cliff
@@ -44,6 +44,6 @@ private:
   std::string cliff_sensors_[4];
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__CLIFF_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__SENSORS__CLIFF_HPP_

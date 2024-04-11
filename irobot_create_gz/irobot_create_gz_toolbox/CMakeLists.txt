@@ -29,10 +29,10 @@ find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(irobot_create_toolbox REQUIRED)
-find_package(ros_ign_interfaces QUIET)
+find_package(ros_gz_interfaces QUIET)
 
-if(NOT ros_ign_interfaces_FOUND)
-  message(WARNING "ros_ign_interfaces not found. Skipping ${PROJECT_NAME} package.")
+if(NOT ros_gz_interfaces_FOUND)
+  message(WARNING "ros_gz_interfaces not found. Skipping ${PROJECT_NAME} package.")
   ament_package()
   return()
 endif()
@@ -50,26 +50,26 @@ set(dependencies
   tf2
   tf2_geometry_msgs
   tf2_ros
-  ros_ign_interfaces
+  ros_gz_interfaces
   irobot_create_toolbox
 )
 
 # Pose republisher
-add_library(irobot_create_ignition_pose_republisher_lib SHARED)
+add_library(irobot_create_gz_pose_republisher_lib SHARED)
 target_sources(
-  irobot_create_ignition_pose_republisher_lib
+  irobot_create_gz_pose_republisher_lib
   PRIVATE
     src/pose_republisher/pose_republisher_node.cpp
 )
-target_include_directories(irobot_create_ignition_pose_republisher_lib PUBLIC include)
-ament_target_dependencies(irobot_create_ignition_pose_republisher_lib
+target_include_directories(irobot_create_gz_pose_republisher_lib PUBLIC include)
+ament_target_dependencies(irobot_create_gz_pose_republisher_lib
   ${dependencies}
 )
 
 # Sensors
-add_library(irobot_create_ignition_sensors_lib SHARED)
+add_library(irobot_create_gz_sensors_lib SHARED)
 target_sources(
-  irobot_create_ignition_sensors_lib
+  irobot_create_gz_sensors_lib
   PRIVATE
     src/sensors/sensors_node.cpp
     src/sensors/bumper.cpp
@@ -79,27 +79,27 @@ target_sources(
     src/sensors/mouse.cpp
     src/sensors/wheel_drop.cpp
 )
-target_include_directories(irobot_create_ignition_sensors_lib PUBLIC include)
-ament_target_dependencies(irobot_create_ignition_sensors_lib
+target_include_directories(irobot_create_gz_sensors_lib PUBLIC include)
+ament_target_dependencies(irobot_create_gz_sensors_lib
   ${dependencies}
 )
 
 # Interface buttons
-add_library(irobot_create_ignition_interface_buttons_lib SHARED)
+add_library(irobot_create_gz_interface_buttons_lib SHARED)
 target_sources(
-  irobot_create_ignition_interface_buttons_lib
+  irobot_create_gz_interface_buttons_lib
   PRIVATE
     src/interface_buttons/interface_buttons_node.cpp
 )
-target_include_directories(irobot_create_ignition_interface_buttons_lib PUBLIC include)
-ament_target_dependencies(irobot_create_ignition_interface_buttons_lib
+target_include_directories(irobot_create_gz_interface_buttons_lib PUBLIC include)
+ament_target_dependencies(irobot_create_gz_interface_buttons_lib
   ${dependencies}
 )
 
 set(libraries_names
-  irobot_create_ignition_pose_republisher_lib
-  irobot_create_ignition_sensors_lib
-  irobot_create_ignition_interface_buttons_lib
+  irobot_create_gz_pose_republisher_lib
+  irobot_create_gz_sensors_lib
+  irobot_create_gz_interface_buttons_lib
 )
 
 # Executables
@@ -111,7 +111,7 @@ target_sources(
   PRIVATE
     src/pose_republisher/pose_republisher_main.cpp
 )
-target_link_libraries(pose_republisher_node irobot_create_ignition_pose_republisher_lib)
+target_link_libraries(pose_republisher_node irobot_create_gz_pose_republisher_lib)
 
 # Sensors node
 add_executable(sensors_node)
@@ -120,7 +120,7 @@ target_sources(
   PRIVATE
     src/sensors/sensors_main.cpp
 )
-target_link_libraries(sensors_node irobot_create_ignition_sensors_lib)
+target_link_libraries(sensors_node irobot_create_gz_sensors_lib)
 
 # Interface buttons node
 add_executable(interface_buttons_node)
@@ -129,7 +129,7 @@ target_sources(
   PRIVATE
     src/interface_buttons/interface_buttons_main.cpp
 )
-target_link_libraries(interface_buttons_node irobot_create_ignition_interface_buttons_lib)
+target_link_libraries(interface_buttons_node irobot_create_gz_interface_buttons_lib)
 
 set(executables_names
   pose_republisher_node

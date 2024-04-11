@@ -3,20 +3,20 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__POSE_REPUBLISHER__POSE_REPUBLISHER_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__POSE_REPUBLISHER__POSE_REPUBLISHER_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__POSE_REPUBLISHER__POSE_REPUBLISHER_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__POSE_REPUBLISHER__POSE_REPUBLISHER_HPP_
 
 #include <string>
 
 #include "control_msgs/msg/dynamic_joint_state.hpp"
-#include "irobot_create_ignition_toolbox/utils.hpp"
+#include "irobot_create_gz_toolbox/utils.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "tf2_msgs/msg/tf_message.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class PoseRepublisher : public rclcpp::Node
@@ -50,6 +50,6 @@ private:
   std::string wheel_joints_[2];
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__POSE_REPUBLISHER__POSE_REPUBLISHER_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__POSE_REPUBLISHER__POSE_REPUBLISHER_HPP_

@@ -6,9 +6,9 @@
 #include <string>
 #include <utility>
 
-#include "irobot_create_ignition_toolbox/pose_republisher/pose_republisher.hpp"
+#include "irobot_create_gz_toolbox/pose_republisher/pose_republisher.hpp"
 
-using irobot_create_ignition_toolbox::PoseRepublisher;
+using irobot_create_gz_toolbox::PoseRepublisher;
 
 PoseRepublisher::PoseRepublisher()
 : rclcpp::Node("pose_republisher_node"),

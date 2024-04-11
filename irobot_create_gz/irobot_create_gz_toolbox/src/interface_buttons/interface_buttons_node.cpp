@@ -3,10 +3,10 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#include "irobot_create_ignition_toolbox/interface_buttons/interface_buttons_node.hpp"
+#include "irobot_create_gz_toolbox/interface_buttons/interface_buttons_node.hpp"
 #include <memory>
 
-using irobot_create_ignition_toolbox::InterfaceButtons;
+using irobot_create_gz_toolbox::InterfaceButtons;
 
 InterfaceButtons::InterfaceButtons()
 : rclcpp::Node("sensors_node")

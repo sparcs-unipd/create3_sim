@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__UTILS_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__UTILS_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__UTILS_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__UTILS_HPP_
 
 #include <atomic>
 #include <memory>
@@ -14,7 +14,7 @@
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include "tf2_msgs/msg/tf_message.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 namespace utils
@@ -97,6 +97,6 @@ inline void tf2_transform_to_pose(const tf2::Transform tf, geometry_msgs::msg::P
 
 }  // namespace utils
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__UTILS_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__UTILS_HPP_

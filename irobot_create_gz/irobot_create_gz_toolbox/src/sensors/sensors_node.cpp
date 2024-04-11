@@ -5,9 +5,9 @@
 
 #include <memory>
 
-#include "irobot_create_ignition_toolbox/sensors/sensors_node.hpp"
+#include "irobot_create_gz_toolbox/sensors/sensors_node.hpp"
 
-using irobot_create_ignition_toolbox::SensorsNode;
+using irobot_create_gz_toolbox::SensorsNode;
 
 SensorsNode::SensorsNode()
 : rclcpp::Node("sensors_node")

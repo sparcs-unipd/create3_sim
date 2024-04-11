@@ -6,13 +6,13 @@
 #include <memory>
 #include <utility>
 
-#include "irobot_create_ignition_toolbox/sensors/bumper.hpp"
-#include "irobot_create_ignition_toolbox/utils.hpp"
+#include "irobot_create_gz_toolbox/sensors/bumper.hpp"
+#include "irobot_create_gz_toolbox/utils.hpp"
 #include "irobot_create_toolbox/math.hpp"
 #include "irobot_create_toolbox/polar_coordinates.hpp"
 #include "irobot_create_toolbox/sensors/bumpers.hpp"
 
-using irobot_create_ignition_toolbox::Bumper;
+using irobot_create_gz_toolbox::Bumper;
 
 Bumper::Bumper(std::shared_ptr<rclcpp::Node> & nh)
 : nh_(nh)
@@ -72,7 +72,7 @@ void Bumper::bumper_callback(const ros_gz_interfaces::msg::Contacts::SharedPtr b
         average_position.z));
 
     tf2::Vector3 contact_point = utils::object_wrt_frame(average_pose, robot_pose);
-    ignition::math::Vector2d cartesian_coord = {contact_point[0], contact_point[1]};
+    gz::math::Vector2d cartesian_coord = {contact_point[0], contact_point[1]};
     auto azimuth = irobot_create_toolbox::toPolar(cartesian_coord).azimuth;
 
     // Find contact zone

@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__IR_OPCODE_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__IR_OPCODE_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__SENSORS__IR_OPCODE_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__SENSORS__IR_OPCODE_HPP_
 
 #include <atomic>
 #include <memory>
@@ -15,10 +15,10 @@
 #include "rclcpp/rclcpp.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
-#include "irobot_create_ignition_toolbox/utils.hpp"
+#include "irobot_create_gz_toolbox/utils.hpp"
 #include "irobot_create_toolbox/polar_coordinates.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 class IrOpcode
@@ -93,6 +93,6 @@ private:
   bool is_dock_visible_ = false;
 };
 
-}  // namespace irobot_create_ignition_toolbox
+}  // namespace irobot_create_gz_toolbox
 
-#endif  // IROBOT_CREATE_IGNITION_TOOLBOX__SENSORS__IR_OPCODE_HPP_
+#endif  // IROBOT_CREATE_GZ_TOOLBOX__SENSORS__IR_OPCODE_HPP_

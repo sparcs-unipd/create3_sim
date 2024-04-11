@@ -3,8 +3,8 @@
  * @author Roni Kreinin (rkreinin@clearpathrobotics.com)
  */
 
-#ifndef IROBOT_CREATE_IGNITION_TOOLBOX__INTERFACE_BUTTONS__INTERFACE_BUTTONS_NODE_HPP_
-#define IROBOT_CREATE_IGNITION_TOOLBOX__INTERFACE_BUTTONS__INTERFACE_BUTTONS_NODE_HPP_
+#ifndef IROBOT_CREATE_GZ_TOOLBOX__INTERFACE_BUTTONS__INTERFACE_BUTTONS_NODE_HPP_
+#define IROBOT_CREATE_GZ_TOOLBOX__INTERFACE_BUTTONS__INTERFACE_BUTTONS_NODE_HPP_
 
 #include <chrono>
 #include <memory>
@@ -15,7 +15,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int32.hpp"
 
-namespace irobot_create_ignition_toolbox
+namespace irobot_create_gz_toolbox
 {
 
 enum Create3Buttons
