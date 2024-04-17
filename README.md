@@ -60,9 +60,9 @@ source install/local_setup.bash
 
 ## Run
 
-#### Classic Gazebo
+### Classic Gazebo
 
-##### Empty world
+#### Empty world
 
 Create® 3 can be spawned in an empty world in Gazebo and monitored through RViz with:
 
@@ -76,7 +76,7 @@ The spawn point can be changed with the `x`, `y`, `z` and `yaw` launch arguments
 ros2 launch irobot_create_gazebo_bringup create3_gazebo.launch.py x:=1.0 y:=0.5 yaw:=1.5707
 ```
 
-##### Namespacing
+#### Namespacing
 
 A namespace can be applied to the robot using the `namespace` launch argument:
 
@@ -93,7 +93,7 @@ ros2 launch irobot_create_gazebo_bringup create3_spawn.launch.py namespace:=robo
 
 > :warning: `create3_gazebo.launch.py` should only be used once as it launches the Gazebo simulator itself. Additional robots should be spawned with `create3_spawn.launch.py`. Namespaces and spawn points should be unique for each robot.
 
-##### AWS house
+#### AWS house
 
 Create® 3 can be spawned in the AWS small house in Gazebo and monitored through RViz.
 This requires that the package `aws_robomaker_small_house_world` is available.
@@ -112,7 +112,7 @@ Then you can run:
 ros2 launch irobot_create_gazebo_bringup create3_gazebo_aws_small.launch.py
 ```
 
-#### Ignition Gazebo
+### Ignition Gazebo
 
 Create® 3 can be spawned in a demo world in Ignition and monitored through RViz with
 
@@ -126,7 +126,7 @@ The spawn point can be changed with the `x`, `y`, `z` and `yaw` launch arguments
 ros2 launch irobot_create_ignition_bringup create3_ignition.launch.py x:=1.0 y:=0.5 yaw:=1.5707
 ```
 
-##### Namespacing
+#### Namespacing
 
 A namespace can be applied to the robot using the `namespace` launch argument:
 
@@ -142,6 +142,39 @@ ros2 launch irobot_create_ignition_bringup create3_spawn.launch.py namespace:=ro
 ```
 
 > :warning: `create3_ignition.launch.py` should only be used once as it launches the Ignition simulator itself. Additional robots should be spawned with `create3_spawn.launch.py`. Namespaces and spawn points should be unique for each robot.
+
+
+### Ignition Gazebo
+
+Create® 3 can be spawned in a demo world in Gazebo and monitored through RViz with
+
+```bash
+ros2 launch irobot_create_gz_bringup create3_gz.launch.py
+```
+
+The spawn point can be changed with the `x`, `y`, `z` and `yaw` launch arguments:
+
+```bash
+ros2 launch irobot_create_gz_bringup create3_gz.launch.py x:=1.0 y:=0.5 yaw:=1.5707
+```
+
+#### Namespacing
+
+A namespace can be applied to the robot using the `namespace` launch argument:
+
+```bash
+ros2 launch irobot_create_gz_bringup create3_gz.launch.py namespace:=my_robot
+```
+
+Multiple robots can be spawned with unique namespaces:
+
+```bash
+ros2 launch irobot_create_gz_bringup create3_ignition.launch.py namespace:=robot1
+ros2 launch irobot_create_gz_bringup create3_spawn.launch.py namespace:=robot2 x:=1.0
+```
+
+> :warning: `create3_gz.launch.py` should only be used once as it launches the Ignition simulator itself. Additional robots should be spawned with `create3_spawn.launch.py`. Namespaces and spawn points should be unique for each robot.
+
 
 ## Package layout
 
@@ -164,3 +197,9 @@ This repository contains packages for both the Classic and Ignition Gazebo simul
     - `irobot_create_ignition_plugins` GUI plugins
     - `irobot_create_ignition_sim`  Metapackage
     - `irobot_create_ignition_toolbox` Sensor and interface nodes
+
+- `irobot_create_gz` Packages used for the Gazebo Simulator
+    - `irobot_create_gz_bringup` Launch files and configurations
+    - `irobot_create_gz_plugins` GUI plugins
+    - `irobot_create_gz_sim`  Metapackage
+    - `irobot_create_gz_toolbox` Sensor and interface nodes
