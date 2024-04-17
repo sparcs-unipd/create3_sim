@@ -22,13 +22,13 @@ ARGUMENTS = [
     DeclareLaunchArgument('use_sim_time', default_value='true',
                           choices=['true', 'false'],
                           description='use_sim_time'),
-    DeclareLaunchArgument('world', default_value='depot',
+    DeclareLaunchArgument('world', default_value='maze',
                           description='Gz World'),
     DeclareLaunchArgument('namespace', default_value='',
                           description='Robot namespace'),
     DeclareLaunchArgument('use_rviz', default_value='true',
                           choices=['true', 'false'], description='Start rviz.'),
-    DeclareLaunchArgument('spawn_dock', default_value='false',
+    DeclareLaunchArgument('spawn_dock', default_value='true',
                           choices=['true', 'false'],
                           description='Spawn the standard dock model.'),
 ]
@@ -94,7 +94,6 @@ def generate_launch_description():
             launch_arguments={'gazebo': 'gz'}.items()
         ),
 
-
         # Spawn Create 3
         Node(
             package='ros_gz_sim',
@@ -132,14 +131,28 @@ def generate_launch_description():
             ]
         ),
 
+        # Create 3 nodes
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([create3_nodes_launch]),
+            launch_arguments=[
+                ('namespace', namespace)
+            ]
+        ),
 
+        # Create 3 gz nodes
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([create3_gz_nodes_launch]),
+            launch_arguments=[
+                ('robot_name', robot_name),
+                ('dock_name', dock_name),
+            ]
+        ),
 
         # Rviz
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([rviz2_launch]),
             condition=IfCondition(LaunchConfiguration('use_rviz')),
         )
-
     ])
 
     # Create launch description and add actions
