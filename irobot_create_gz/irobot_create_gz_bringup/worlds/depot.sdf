@@ -13,11 +13,13 @@
     <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
     <plugin filename="gz-sim-contact-system" name="gz::sim::systems::Contact"></plugin>
 
+    <!--
     <include>
       <uri>
-        https://fuel.gazebosim.org/1.0/OpenRobotics/models/Depot
+        https://fuel.gazebosim.org/1.0/MovAi/worlds/tugbot_depot
       </uri>
     </include>
-
+    -->
+    
   </world>
 </sdf>
